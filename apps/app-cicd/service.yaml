@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-cicd
+  namespace: dev
+spec:
+  selector:
+    app: app-cicd
+  ports:
+    - port: 8888
+      targetPort: 8888

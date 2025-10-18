@@ -3,13 +3,14 @@ kind: Application
 metadata:
   name: app-cicd
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: CreateNamespace=true
 spec:
   project: default
- source:
-  repoURL: https://github.com/ElyesMR/infra-cicd
-  targetRevision: HEAD
-  path: apps/app-cicd
-
+  source:
+    repoURL: https://github.com/ElyesMR/infra-cicd
+    targetRevision: HEAD
+    path: apps/app-cicd
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
@@ -17,5 +18,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
